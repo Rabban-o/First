@@ -27,11 +27,45 @@ print(len(myString))
 print(list(myString))
 
 
-## Hill Cipher 
-## Hill cipher takes the number equivalent of a letter and adds 3 to it to get encrypt it
-#def Hill_Cipher(word):
- #   reference = 'abcdefghijklmnopqrstuvwxyz'
-  #  method = input('Encrypt or Decrypt? Type E for encrypt and D for decrypt').upper()
-   # word = input('Enter the text to be decrypted')
+## Caesar Cipher 
+## Caesar cipher takes the number equivalent of a letter and adds 3 to it to get encrypt it
+def Caesar_Cipher():
+    reference = 'abcdefghijklmnopqrstuvwxyz'
+    method = input('Encrypt or Decrypt? Type E for encrypt and D for decrypt: ').upper()
+    key = 3
+    
+    if method == 'D':
+        word = input('Enter the message to be decrypted: ').lower()
+        word_list = list(word)
+        Final_message = ''
+        for i in word_list:
+            if not i.isalpha():
+                Final_message += i
+            else:
+                index = reference.find(i)
+                new_index = (index - 3)%26
+                decrypted_letter = reference[new_index]
+                Final_message += decrypted_letter
+    elif method == 'E':
+        word = input('Enter the message to be encrypted: ').lower()
+        word_list = list(word)
+        Final_message = ''
+        for i in word_list:
+            if not i.isalpha():
+                Final_message += i
+            else:
+                index = reference.find(i)
+                new_index = (index + 3)%26
+                encrypted_letter = reference[new_index]
+                Final_message += encrypted_letter
+        
+        
+    return Final_message.capitalize()
+
+print(Caesar_Cipher())
+
+
+                
+                 
     
      
